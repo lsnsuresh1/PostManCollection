@@ -1,0 +1,101 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Azure Cloud Functions copy",
+		"_postman_id": "3b6997fa-9e9b-2066-f740-c7962a40ba96",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Remote Function",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+							"tests[\"Body matches string\"] = responseBody.has(\"apple\");\r",
+							"tests[\"Date is present\"] = postman.getResponseHeader(\"Date\");\r",
+							"tests[\"Connection is present\"] = postman.getResponseHeader(\"Connection\");\r",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "https://azure-test-20170927220323382.azurewebsites.net/api/food?code=OGassDSVuW8r5gaZNY/UuVZLxLYUFBaUzcnbcokjNJSol7tz4Bpkpg==&fruit=apple",
+					"protocol": "https",
+					"host": [
+						"azure-test-20170927220323382",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"food"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "OGassDSVuW8r5gaZNY/UuVZLxLYUFBaUzcnbcokjNJSol7tz4Bpkpg==",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "fruit",
+							"value": "apple",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Local Function",
+			"request": {
+				"url": {
+					"raw": "http://localhost:7071/api/food?fruit=apple",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7071",
+					"path": [
+						"api",
+						"food"
+					],
+					"query": [
+						{
+							"key": "fruit",
+							"value": "apple",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
